@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui widgets
+TEMPLATE = app
 
 CONFIG += c++20
 
@@ -7,11 +8,24 @@ UI_DIR = $$PWD/src/ui
 
 INCLUDEPATH =
 
-SOURCES += $$files($$SRC_DIR/*.cpp, true)
+SOURCES += $$files($$SRC_DIR/*.cpp, true) \
+    src/ui/effects/circlerendereffect.cpp \
+    src/ui/effects/pingeffect.cpp \
+    src/ui/effects/pulseeffect.cpp \
+    src/ui/effects/solidrendereffect.cpp \
+    src/ui/effects/wavefromcentedeffect.cpp \
+    src/ui/effects/wavetocentereffect.cpp
 
-HEADERS += $$files($$SRC_DIR/*.h, true)
+HEADERS += $$files($$SRC_DIR/*.h, true) \
+        $$files($$UI_DIR/*.h, true) \
+        src/ui/effects/circlerendereffect.h \
+        src/ui/effects/pingeffect.h \
+        src/ui/effects/pulseeffect.h \
+        src/ui/effects/solidrendereffect.h \
+        src/ui/effects/wavefromcentedeffect.h \
+        src/ui/effects/wavetocentereffect.h
 
-FORMS += $$files(UI_DIR/*.ui, true)
+FORMS += $$files($$UI_DIR/*.ui, true)
 
 TRANSLATIONS = $$files(translations/*.ts)
 
@@ -24,3 +38,6 @@ DEFINES += APP_VERSION = \\\"$$VERSION\\\"
 
 message("Search path: $$SRC_DIR")
 message("Found CPP: $$SOURCES")
+message()
+message("Search path: $$SRC_DIR")
+message("Found H: $$HEADERS")
