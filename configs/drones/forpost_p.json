@@ -1,0 +1,20 @@
+﻿{
+    "name": "Forpost-P",
+    "max_altitude": 6000,
+    "cruise_speed": 150,
+    "max_flight_time": 18,
+    "sensors": {
+        "optical": {
+            "zoom": [1, 4, 8, 16],
+            "fov": [45, 22.5, 11.25, 5.6]
+        },
+        "thermal": {
+            "resolution": "640x480",
+            "range": 5000
+        },
+        "laser_rangefinder": {
+            "max_range": 10000,
+            "accuracy": 5
+        }
+    }
+}
