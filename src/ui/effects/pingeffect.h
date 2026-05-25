@@ -3,19 +3,17 @@
 
 #include "circlerendereffect.h"
 
-#include <QTimer>
+#include <QElapsedTimer>
 
-class PingEffect : public CircleRenderEffect, public QObject
+class PingEffect : public CircleRenderEffect
 {
-    Q_OBJECT
-
     QColor accent;
-    QTimer timer;
+    QElapsedTimer timer;
     int radius;
-    float delay = 20.f;    // per cents of timer.interval()
+    int period = 1000;      // msec
+    float delay = 0.2f;     // per cents
 
 public:
-    PingEffect(const QColor& accent, const QTime& period, int radius);
     PingEffect(const QColor& accent, int msec, int radius);
     virtual ~PingEffect() override = default;
 
@@ -27,10 +25,11 @@ public:
     void setRadius(int radius);
     int getRadius() const;
 
-    void setPeriod(const QTime& period);
-    QTime getPeriodTime() const;
     void setPeriod(int msec);
     int getPeriod() const;
+
+    QColor getAccent() const;
+    void setAccent(const QColor &newAccent);
 };
 
 #endif // PINGEFFECT_H

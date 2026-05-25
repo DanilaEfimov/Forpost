@@ -5,17 +5,16 @@
 
 #include <QTimer>
 
-class WaveFromCentedEffect : public CircleRenderEffect, public QObject
+class WaveFromCenterEffect : public CircleRenderEffect
 {
-    Q_OBJECT
-
     QColor accent;
-    quint16 distance = 50;  // in pixels
-    quint8 speed;           // in pixels
+    quint16 distance;   // in pixels
+    quint8 width = 2;   // in pixels
+    quint8 step = 1;    // in pixels
 
 public:
-    WaveFromCentedEffect(const QColor &accent, quint16 distance, quint8 speed);
-    virtual ~WaveFromCentedEffect() override = default;
+    WaveFromCenterEffect(const QColor &accent, quint16 distance = 50);
+    virtual ~WaveFromCenterEffect() override = default;
 
     void render(QPainter& painter, const Ellipse& ellispe) override;
 
@@ -25,8 +24,11 @@ public:
     quint16 getDistance() const;
     void setDistance(quint16 newDistance);
 
-    quint8 getSpeed() const;
-    void setSpeed(quint8 newSpeed);
+    quint8 getWidth() const;
+    void setWidth(quint8 newWidth);
+
+    quint8 getStep() const;
+    void setStep(quint8 newStep);
 };
 
 #endif // WAVEFROMCENTEDEFFECT_H

@@ -1,5 +1,7 @@
 #include "solidrendereffect.h"
 
+#include <QPainterPath>
+
 SolidRenderEffect::SolidRenderEffect(const QColor& fill)
     : CircleRenderEffect(), accent(fill)
 {}
@@ -17,6 +19,11 @@ void SolidRenderEffect::setAccent(const QColor &newAccent)
 
 void SolidRenderEffect::render(QPainter &painter, const Ellipse &ellipse)
 {
+    painter.setRenderHint(QPainter::Antialiasing);
+
     QBrush brush(this->accent);
+    painter.setBrush(brush);
+    painter.setPen(Qt::NoPen);
+
     painter.drawEllipse(ellipse.toRect());
 }

@@ -1,43 +1,62 @@
-QT       += core gui widgets
+QT += core gui widgets
 TEMPLATE = app
 
 CONFIG += c++20
 
-SRC_DIR = $$PWD/src
-UI_DIR = $$PWD/src/ui
+# ========================
+# ROOT PATH
+# ========================
+SRC = $$PWD/src
 
-INCLUDEPATH =
+# ========================
+# INCLUDE PATH (ТОЛЬКО ПАПКИ!)
+# ========================
+INCLUDEPATH += \
+    $$SRC \
+    $$SRC/ui \
+    $$SRC/ui/widgets \
+    $$SRC/ui/effects \
+    $$SRC/ui/cockpit \
+    $$SRC/ui/dialogs \
+    $$SRC/core \
+    $$SRC/control \
+    $$SRC/simulation
 
-SOURCES += $$files($$SRC_DIR/*.cpp, true) \
-    src/ui/effects/circlerendereffect.cpp \
-    src/ui/effects/pingeffect.cpp \
-    src/ui/effects/pulseeffect.cpp \
-    src/ui/effects/solidrendereffect.cpp \
-    src/ui/effects/wavefromcentedeffect.cpp \
-    src/ui/effects/wavetocentereffect.cpp
+# ========================
+# SOURCES
+# ========================
+SOURCES += \
+    $$SRC/core/main.cpp \
+    $$SRC/ui/widgets/radarview.cpp \
+    $$SRC/ui/effects/circlerendereffect.cpp \
+    $$SRC/ui/effects/pingeffect.cpp \
+    $$SRC/ui/effects/pulseeffect.cpp \
+    $$SRC/ui/effects/solidrendereffect.cpp \
+    $$SRC/ui/effects/wavefromcentedeffect.cpp \
+    $$SRC/ui/effects/wavetocentereffect.cpp \
+    $$SRC/ui/cockpit/mainwindow.cpp
 
-HEADERS += $$files($$SRC_DIR/*.h, true) \
-        $$files($$UI_DIR/*.h, true) \
-        src/ui/effects/circlerendereffect.h \
-        src/ui/effects/pingeffect.h \
-        src/ui/effects/pulseeffect.h \
-        src/ui/effects/solidrendereffect.h \
-        src/ui/effects/wavefromcentedeffect.h \
-        src/ui/effects/wavetocentereffect.h
+# ========================
+# HEADERS
+# ========================
+HEADERS += \
+    $$SRC/ui/widgets/radarview.h \
+    $$SRC/ui/effects/circlerendereffect.h \
+    $$SRC/ui/effects/pingeffect.h \
+    $$SRC/ui/effects/pulseeffect.h \
+    $$SRC/ui/effects/solidrendereffect.h \
+    $$SRC/ui/effects/wavefromcentedeffect.h \
+    $$SRC/ui/effects/wavetocentereffect.h \
+    $$SRC/ui/cockpit/mainwindow.h
 
-FORMS += $$files($$UI_DIR/*.ui, true)
+# ========================
+# FORMS (UI)
+# ========================
+FORMS += \
+    $$SRC/ui/widgets/radarview.ui \
+    $$SRC/ui/cockpit/mainwindow.ui
 
-TRANSLATIONS = $$files(translations/*.ts)
-
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
-VERSION = 1.0.0
-DEFINES += APP_VERSION = \\\"$$VERSION\\\"
-
-message("Search path: $$SRC_DIR")
-message("Found CPP: $$SOURCES")
-message()
-message("Search path: $$SRC_DIR")
-message("Found H: $$HEADERS")
+# ========================
+# DEFINES
+# ========================
+DEFINES += APP_VERSION=\"1.0.0\"

@@ -5,7 +5,7 @@
 
 #include <QTimer>
 
-class PulseEffect : public CircleRenderEffect, public QObject
+class PulseEffect : public CircleRenderEffect
 {
     Q_OBJECT
 

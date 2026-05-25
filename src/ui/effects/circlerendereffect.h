@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include <QRect>
+#include <QObject>
 
 struct Ellipse {
     QPoint center;
@@ -15,11 +16,13 @@ struct Ellipse {
     QRect toRect() const;
 };
 
-class CircleRenderEffect
+class CircleRenderEffect : public QObject
 {
+    Q_OBJECT
+
 public:
     CircleRenderEffect();
-    virtual ~CircleRenderEffect() = default;
+    virtual ~CircleRenderEffect();
 
     virtual void render(QPainter& painter, const Ellipse& ellipse) = 0;
 };

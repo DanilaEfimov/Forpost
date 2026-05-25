@@ -2,30 +2,47 @@
 
 #include <QTime>
 
-PingEffect::PingEffect(const QColor& accent, const QTime& period, int radius)
-    : CircleRenderEffect(), QObject(), accent(accent), timer(this), radius(radius)
+QColor PingEffect::getAccent() const
 {
-    this->timer.setInterval(period.msec());
-    connect(&this->timer, &QTimer::timeout, this, [this](){
-        auto interval = this->timer.interval();
-        this->timer.start(interval);
-    });
+    return this->accent;
+}
+
+void PingEffect::setAccent(const QColor &newAccent)
+{
+    this->accent = newAccent;
 }
 
 PingEffect::PingEffect(const QColor& accent, int msec, int radius)
-    : PingEffect(accent, QTime(0, 0, 0, msec), radius)
-{}
+    : CircleRenderEffect(),
+    accent(accent),
+    timer(),
+    radius(radius),
+    period(msec)
+{
+    this->timer.start();
+}
 
 void PingEffect::render(QPainter& painter, const Ellipse& ellipse)
 {
-    int remains = this->timer.remainingTime();
-    bool pingMark = remains / this->getPeriod() < this->delay;
+    float progress = (this->timer.elapsed() % this->period) / (float) this->period;
 
-    if(!pingMark)
+    if (progress > (1.0f - this->delay))
         return;
 
-    QBrush brush(this->accent);
-    Ellipse ping(ellipse.center, this->radius);
+    float intensity = 1.0f - progress;
+    int currentRadius = this->radius * progress;
+
+    QPen pen(this->accent);
+    pen.setWidth(2);
+
+    QColor c = this->accent;
+    c.setAlphaF(intensity);
+    pen.setColor(c);
+
+    painter.setPen(pen);
+    painter.setBrush(Qt::NoBrush);
+
+    Ellipse ping(ellipse.center, currentRadius);
     painter.drawEllipse(ping.toRect());
 }
 
@@ -49,22 +66,13 @@ int PingEffect::getRadius() const
     return this->radius;
 }
 
-void PingEffect::setPeriod(const QTime& period)
-{
-    this->timer.setInterval(period.msec());
-}
-
-QTime PingEffect::getPeriodTime() const
-{
-    return QTime(0, 0, 0, this->timer.interval());
-}
-
 void PingEffect::setPeriod(int msec)
 {
-    this->timer.setInterval(msec);
+    this->period = std::abs(msec);
 }
 
 int PingEffect::getPeriod() const
 {
-    return this->timer.interval();
+    return this->period;
 }
+

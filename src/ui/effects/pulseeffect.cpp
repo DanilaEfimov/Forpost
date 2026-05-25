@@ -42,7 +42,7 @@ QColor PulseEffect::currentColor() const
 }
 
 PulseEffect::PulseEffect(const QTime& period, const QColor& accent)
-    : CircleRenderEffect(), QObject(), accent(accent)
+    : CircleRenderEffect(), accent(accent)
 {
     this->timer.setInterval(period.msec());
 
