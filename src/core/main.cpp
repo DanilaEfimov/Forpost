@@ -2,19 +2,19 @@
 #include <QMainWindow>
 
 #include "radarview.h"
-#include "solidrendereffect.h"
+#include "pingeffect.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    auto effect = std::make_unique<SolidRenderEffect>(QColor(0, 255, 0, 30));
+    auto effect = std::make_unique<PingEffect>(QColor(0, 255, 0, 120), 2000, 500);
 
     auto radar = new RadarView(
         std::move(effect),
-        8,
-        16,
-        Qt::green
+        6,
+        12,
+        Qt::white
         );
 
     auto window = new QMainWindow;

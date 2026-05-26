@@ -32,8 +32,21 @@ public:
 
     void setRenderEffect(std::unique_ptr<CircleRenderEffect>&& effect);
 
+    QColor getAccentColor() const;
+    void setAccentColor(const QColor &newAccentColor);
+
+    quint8 getSectors() const;
+    void setSectors(quint8 newSectors);
+
+    quint8 getCircles() const;
+    void setCircles(quint8 newCircles);
+
 private:
     Ui::RadarView* ui;
+
+    QPointF intersectEllipse(quint16 ax, quint16 by, double angle);
+    void printSectors(QPainter& painter);
+    void printCircles(QPainter& painter);
 
 protected:
     void paintEvent(QPaintEvent* event) override;
