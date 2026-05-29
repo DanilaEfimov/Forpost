@@ -34,7 +34,8 @@ SOURCES += \
     $$SRC/ui/effects/solidrendereffect.cpp \
     $$SRC/ui/effects/wavefromcentedeffect.cpp \
     $$SRC/ui/effects/wavetocentereffect.cpp \
-    $$SRC/ui/cockpit/mainwindow.cpp
+    $$SRC/ui/cockpit/mainwindow.cpp \
+    src/ui/effects/radiansweepeffect.cpp
 
 # ========================
 # HEADERS
@@ -47,7 +48,8 @@ HEADERS += \
     $$SRC/ui/effects/solidrendereffect.h \
     $$SRC/ui/effects/wavefromcentedeffect.h \
     $$SRC/ui/effects/wavetocentereffect.h \
-    $$SRC/ui/cockpit/mainwindow.h
+    $$SRC/ui/cockpit/mainwindow.h \
+    src/ui/effects/radiansweepeffect.h
 
 # ========================
 # FORMS (UI)
