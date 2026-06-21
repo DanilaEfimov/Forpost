@@ -37,3 +37,10 @@ void ColorScheme::setColor(MessageType type, QColor color)
 {
     this->scheme[type] = color;
 }
+
+void ColorScheme::invert()
+{
+    for(auto& p : this->scheme){
+        p = QColor(255 - p.red(), 255 - p.green(), 255 - p.blue(), p.alpha());
+    }
+}

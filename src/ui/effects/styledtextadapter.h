@@ -1,14 +1,15 @@
 #ifndef STYLEDTEXTADAPTER_H
 #define STYLEDTEXTADAPTER_H
 
-#include "textcolorschemeeffect.h"
+#include "styledtext.h"
 
 #include <QTextDocument>
+#include <QTextEdit>
 
 class StyledTextAdapter
 {
 public:
-    static QTextDocument* toDocument(const StyledText& styled);
+    static void print(const StyledText& styled, QTextEdit* edit);
 };
 
 #endif // STYLEDTEXTADAPTER_H

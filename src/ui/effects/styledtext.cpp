@@ -30,8 +30,12 @@ qsizetype StyledText::findStartOfSpan(qsizetype idx) const
 }
 
 StyledText::StyledText(const QString &text, QColor color)
-    : text(text), style({StyleSpan(text.length(), color)})
-{}
+    : text(text), style()
+{
+    StyleSpan span(text.length(), color);
+    span.setFormat(TextStyleFlag::None);
+    this->style.push_back(span);
+}
 
 StyledText::StyledText(const QString &text)
     : text(text), style({StyleSpan(text.length())})
@@ -57,6 +61,21 @@ void StyledText::setStyle(qsizetype pos, StyleSpan style)
     this->style.insert(from, style);
 }
 
+const QString &StyledText::getText() const
+{
+    return this->text;
+}
+
+const QVector<StyleSpan> &StyledText::getSpans() const
+{
+    return this->style;
+}
+
+QVector<StyleSpan> &StyledText::getSpans()
+{
+    return this->style;
+}
+
 int StyleSpan::getLength() const
 {
     return this->length;
@@ -77,14 +96,53 @@ void StyleSpan::setColor(const QColor &newColor)
     this->color = newColor;
 }
 
-TextStyleFlag StyleSpan::getFormat() const
+TextStyleFlags StyleSpan::getFormat() const
 {
     return this->format;
 }
 
 void StyleSpan::setFormat(TextStyleFlag newFormat)
 {
-    this->format = newFormat;
+    this->format |= newFormat;
+}
+
+QTextCharFormat StyleSpan::toFormat() const
+{
+    QTextCharFormat format;
+
+    format.setForeground(this->color);
+    format.setFontPointSize(this->fontSize);
+    this->applyFlags(format);
+
+    return format;
+}
+
+void StyleSpan::resetFormat()
+{
+    this->format = TextStyleFlag::None;
+}
+
+int StyleSpan::getFontSize() const
+{
+    return this->fontSize;
+}
+
+void StyleSpan::setFontSize(int newFontSize)
+{
+    this->fontSize = newFontSize;
+}
+
+void StyleSpan::applyFlags(QTextCharFormat &format) const
+{
+    if(this->format.testFlags(TextStyleFlag::None))
+        return;
+
+    if(this->format.testFlags(TextStyleFlag::Bold))
+        format.setFontWeight(QFont::Bold);
+    if(this->format.testFlags(TextStyleFlag::Italic))
+        format.setFontWeight(QFont::StyleItalic);
+    if(this->format.testFlags(TextStyleFlag::Underline))
+        format.setFontUnderline(true);
 }
 
 StyleSpan::StyleSpan(int len, QColor color)

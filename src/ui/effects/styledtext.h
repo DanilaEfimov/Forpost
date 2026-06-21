@@ -3,6 +3,7 @@
 
 #include <QColor>
 #include <QVector>
+#include <QTextCharFormat>
 
 enum class TextStyleFlag : quint32 {
     None        = 0,
@@ -16,8 +17,11 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(TextStyleFlags);
 
 class StyleSpan {
     int length;
-    TextStyleFlag format;
+    int fontSize = 16;
+    TextStyleFlags format = TextStyleFlag::None;
     QColor color = Qt::black;
+
+    void applyFlags(QTextCharFormat& format) const;
 
 public:
     StyleSpan(int len, QColor color);
@@ -30,8 +34,15 @@ public:
 
     QColor getColor() const;
     void setColor(const QColor &newColor);
-    TextStyleFlag getFormat() const;
+
+    TextStyleFlags getFormat() const;
     void setFormat(TextStyleFlag newFormat);
+
+    QTextCharFormat toFormat() const;
+    void resetFormat();
+
+    int getFontSize() const;
+    void setFontSize(int newFontSize);
 };
 
 class StyledText {
@@ -43,6 +54,10 @@ public:
     StyledText(const QString& text);
 
     void setStyle(qsizetype pos, StyleSpan style);
+
+    const QString& getText() const;
+    const QVector<StyleSpan>& getSpans() const;
+    QVector<StyleSpan>& getSpans();
 
     qsizetype findIntersectionIdx(qsizetype pos) const;
     qsizetype findStartOfSpan(qsizetype idx) const;

@@ -26,6 +26,7 @@ SOURCES += \
     $$SRC/ui/effects/wavefromcentedeffect.cpp \
     $$SRC/ui/effects/wavetocentereffect.cpp \
     $$SRC/ui/cockpit/mainwindow.cpp \
+    src/ui/effects/noisetexteffect.cpp \
     src/ui/effects/radiansweepeffect.cpp \
     src/ui/effects/solidtextcoloreffect.cpp \
     src/ui/effects/styledtext.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     $$SRC/ui/effects/wavefromcentedeffect.h \
     $$SRC/ui/effects/wavetocentereffect.h \
     $$SRC/ui/cockpit/mainwindow.h \
+    src/ui/effects/noisetexteffect.h \
     src/ui/effects/radiansweepeffect.h \
     src/ui/effects/solidtextcoloreffect.h \
     src/ui/effects/styledtext.h \

@@ -14,7 +14,12 @@ enum class MessageType : quint8 {
 };
 
 class ColorScheme {
-    QMap<MessageType, QColor> scheme;
+public:
+    using Pair = std::pair<MessageType, QColor>;
+    using Scheme = QMap<MessageType, QColor>;
+
+private:
+    Scheme scheme;
 
     static constexpr int defaultColor = Qt::black;
 
@@ -23,6 +28,8 @@ public:
 
     QColor getColor(MessageType type) const;
     void setColor(MessageType type, QColor color);
+
+    void invert();
 };
 
 class SolidTextColorEffect : public TextColorSchemeEffect
