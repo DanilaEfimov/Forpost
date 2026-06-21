@@ -1,0 +1,42 @@
+#ifndef SOLIDTEXTCOLOREFFECT_H
+#define SOLIDTEXTCOLOREFFECT_H
+
+#include "textcolorschemeeffect.h"
+#include "styledtext.h"
+
+#include <QMap>
+
+enum class MessageType : quint8 {
+    Info,
+    Error,
+    Warning,
+    Operator,
+};
+
+class ColorScheme {
+    QMap<MessageType, QColor> scheme;
+
+    static constexpr int defaultColor = Qt::black;
+
+public:
+    ColorScheme(const QMap<MessageType, QColor>& scheme);
+
+    QColor getColor(MessageType type) const;
+    void setColor(MessageType type, QColor color);
+};
+
+class SolidTextColorEffect : public TextColorSchemeEffect
+{
+    MessageType source;
+    ColorScheme scheme;
+
+public:
+    SolidTextColorEffect(MessageType source, ColorScheme&& scheme);
+    SolidTextColorEffect(MessageType source, const ColorScheme& scheme);
+
+    QColor Color(MessageType source) const;
+
+    StyledText apply(const QString &line) override;
+};
+
+#endif // SOLIDTEXTCOLOREFFECT_H
