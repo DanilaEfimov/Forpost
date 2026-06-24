@@ -4,22 +4,22 @@
 
 float CameraConfig::getCameraPitch() const
 {
-    return cameraPitch;
+    return this->cameraPitch;
 }
 
 void CameraConfig::setCameraPitch(float newCameraPitch)
 {
-    cameraPitch = newCameraPitch;
+    this->cameraPitch = newCameraPitch;
 }
 
 int CameraConfig::getCameraPowerMw() const
 {
-    return cameraPowerMw;
+    return this->cameraPowerMw;
 }
 
 void CameraConfig::setCameraPowerMw(int newCameraPowerMw)
 {
-    cameraPowerMw = newCameraPowerMw;
+    this->cameraPowerMw = newCameraPowerMw;
 }
 
 float CameraConfig::normalizePitch(float cameraPitch)

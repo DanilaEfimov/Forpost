@@ -37,7 +37,9 @@ void ChatView::setInputEffect(effect_p&&effect)
 void ChatView::addLine(const StyledText &line)
 {
     this->ui->chatText->append(NEWLINE);
+
     StyledTextAdapter::print(line, this->ui->chatText);
+
     this->messages.push_back(line);
 }
 

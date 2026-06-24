@@ -22,8 +22,8 @@ void Knob::paintEvent(QPaintEvent* ev)
     p.setRenderHint(QPainter::Antialiasing);
 
     this->drawBackground(p);
-    this->drawBorders(p);
     this->drawRotatingEffect(p);
+    this->drawBorders(p);
     this->drawDirectionPointer(p);
 }
 
@@ -164,6 +164,7 @@ void Knob::drawBorders(QPainter &p)
 
     QPen pen(this->borderColor);
     pen.setWidth(this->borderWidth);
+    p.setPen(pen);
     p.setBrush(Qt::NoBrush);
 
     p.drawEllipse(center, r, r);

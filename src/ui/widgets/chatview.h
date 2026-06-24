@@ -25,7 +25,7 @@ class ChatView : public QWidget
 
 public:
     explicit ChatView(QWidget *parent = nullptr);
-    ~ChatView();
+    virtual ~ChatView();
 
     void setInputEffect(effect_p&& effect);
 
