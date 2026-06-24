@@ -23,7 +23,8 @@ QColor NoiseTextEffect::randomColor()
                   rg->bounded(0,256));
 }
 
-NoiseTextEffect::NoiseTextEffect() {}
+NoiseTextEffect::NoiseTextEffect()
+{}
 
 void NoiseTextEffect::addNoiseFlag(NoiseMode mode)
 {

@@ -9,8 +9,6 @@
 class TextColorSchemeEffect
 {
 public:
-    TextColorSchemeEffect();
-
     virtual StyledText apply(const QString& line) = 0;
 };
 

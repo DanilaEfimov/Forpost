@@ -11,49 +11,28 @@ INCLUDEPATH += \
     $$SRC/ui/widgets \
     $$SRC/ui/effects \
     $$SRC/ui/cockpit \
-    $$SRC/ui/dialogs \
+    $$SRC/ui/styles \
     $$SRC/core \
     $$SRC/control \
     $$SRC/simulation
 
 SOURCES += \
     $$SRC/core/main.cpp \
-    $$SRC/ui/widgets/radarview.cpp \
-    $$SRC/ui/effects/circlerendereffect.cpp \
-    $$SRC/ui/effects/pingeffect.cpp \
-    $$SRC/ui/effects/pulseeffect.cpp \
-    $$SRC/ui/effects/solidrendereffect.cpp \
-    $$SRC/ui/effects/wavefromcentedeffect.cpp \
-    $$SRC/ui/effects/wavetocentereffect.cpp \
     $$SRC/ui/cockpit/mainwindow.cpp \
-    src/ui/effects/noisetexteffect.cpp \
-    src/ui/effects/radiansweepeffect.cpp \
-    src/ui/effects/solidtextcoloreffect.cpp \
-    src/ui/effects/styledtext.cpp \
-    src/ui/effects/styledtextadapter.cpp \
-    src/ui/effects/textcolorschemeeffect.cpp \
-    src/ui/widgets/chatview.cpp
+    $$files($$SRC/ui/widgets/*.cpp) \
+    $$files($$SRC/ui/effects/*.cpp) \
+    $$files($$SRC/ui/styles/*.cpp)
 
 HEADERS += \
-    $$SRC/ui/widgets/radarview.h \
-    $$SRC/ui/effects/circlerendereffect.h \
-    $$SRC/ui/effects/pingeffect.h \
-    $$SRC/ui/effects/pulseeffect.h \
-    $$SRC/ui/effects/solidrendereffect.h \
-    $$SRC/ui/effects/wavefromcentedeffect.h \
-    $$SRC/ui/effects/wavetocentereffect.h \
-    $$SRC/ui/cockpit/mainwindow.h \
-    src/ui/effects/noisetexteffect.h \
-    src/ui/effects/radiansweepeffect.h \
-    src/ui/effects/solidtextcoloreffect.h \
-    src/ui/effects/styledtext.h \
-    src/ui/effects/styledtextadapter.h \
-    src/ui/effects/textcolorschemeeffect.h \
-    src/ui/widgets/chatview.h
+    $$files($$SRC/ui/widgets/*.h) \
+    $$files($$SRC/ui/effects/*.h) \
+    $$files($$SRC/ui/styles/*.h)
 
 FORMS += \
-    $$SRC/ui/widgets/radarview.ui \
-    $$SRC/ui/cockpit/mainwindow.ui \
-    src/ui/widgets/chatview.ui
+    $$files($$SRC/ui/widgets/*.ui) \
+    $$SRC/ui/cockpit/mainwindow.ui
 
 DEFINES += APP_VERSION=\"1.0.0\"
+
+RESOURCES += \
+    $$SRC/ui/styles/styles.qrc

@@ -1,0 +1,139 @@
+QMainWindow,
+QWidget {
+    background-color: #1b1f24;
+    color: #d7dde5;
+    font-family: "Segoe UI";
+    font-size: 10pt;
+}
+
+QGroupBox {
+    border: 1px solid #313842;
+    border-radius: 6px;
+    margin-top: 12px;
+    padding-top: 10px;
+    background: #20262d;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #5fd3bc;
+    font-weight: bold;
+}
+
+QPushButton {
+    background: #28303a;
+    border: 1px solid #39424d;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background: #34404d;
+}
+
+QPushButton:pressed {
+    background: #1f252d;
+}
+
+QPushButton:checked {
+    background: #1d5d56;
+    border: 1px solid #5fd3bc;
+}
+
+QLineEdit,
+QTextEdit,
+QPlainTextEdit,
+QSpinBox,
+QDoubleSpinBox,
+QComboBox {
+    background: #12161b;
+    border: 1px solid #303844;
+    border-radius: 4px;
+    padding: 4px;
+    color: #d7dde5;
+}
+
+QLineEdit:focus,
+QTextEdit:focus,
+QPlainTextEdit:focus {
+    border: 1px solid #5fd3bc;
+}
+
+QTableWidget,
+QTableView {
+    background: #161b20;
+    border: 1px solid #313842;
+    gridline-color: #2b323c;
+}
+
+QHeaderView::section {
+    background: #252c34;
+    border: none;
+    padding: 5px;
+    color: #5fd3bc;
+    font-weight: bold;
+}
+
+QTableView::item:selected {
+    background: #235c54;
+}
+
+QListView,
+QListWidget {
+    background: #161b20;
+    border: 1px solid #313842;
+    outline: none;
+}
+
+QListView::item,
+QListWidget::item {
+    padding: 6px;
+    border-bottom: 1px solid #242b34;
+}
+
+QListView::item:selected,
+QListWidget::item:selected {
+    background: #235c54;
+}
+
+QTabWidget::pane {
+    border: 1px solid #313842;
+}
+
+QTabBar::tab {
+    background: #252c34;
+    padding: 8px 15px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background: #1d5d56;
+    color: white;
+}
+
+QStatusBar {
+    background: #161b20;
+    border-top: 1px solid #313842;
+}
+
+
+QScrollBar:vertical {
+    width: 10px;
+    background: #1b1f24;
+}
+
+QScrollBar::handle:vertical {
+    background: #3d4652;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #5fd3bc;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}

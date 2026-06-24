@@ -17,7 +17,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(TextStyleFlags);
 
 class StyleSpan {
     int length;
-    int fontSize = 16;
+    int fontSize = 14;
     TextStyleFlags format = TextStyleFlag::None;
     QColor color = Qt::black;
 

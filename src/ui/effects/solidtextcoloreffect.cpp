@@ -1,6 +1,19 @@
 #include "solidtextcoloreffect.h"
 
-TextColorSchemeEffect::TextColorSchemeEffect()
+using Pair = ColorScheme::Pair;
+static const ColorScheme defaultScheme(ColorScheme::Scheme{
+    Pair{MessageType::Error, Qt::red},
+    Pair{MessageType::Warning, Qt::yellow},
+    Pair{MessageType::Info, Qt::green},
+    Pair{MessageType::Operator, Qt::cyan}
+});
+
+SolidTextColorEffect::SolidTextColorEffect()
+    : source(MessageType::Operator), scheme(defaultScheme)
+{}
+
+SolidTextColorEffect::SolidTextColorEffect(MessageType source)
+    : source(source), scheme(defaultScheme)
 {}
 
 SolidTextColorEffect::SolidTextColorEffect(MessageType source, ColorScheme &&scheme)
@@ -11,9 +24,19 @@ SolidTextColorEffect::SolidTextColorEffect(MessageType source, const ColorScheme
     : source(source), scheme(scheme)
 {}
 
-QColor SolidTextColorEffect::Color(MessageType source) const
+QColor SolidTextColorEffect::Color() const
 {
-    return this->scheme.getColor(source);
+    return this->scheme.getColor(this->source);
+}
+
+void SolidTextColorEffect::setSource(MessageType source)
+{
+    this->source = source;
+}
+
+MessageType SolidTextColorEffect::getSource() const
+{
+    return this->source;
 }
 
 StyledText SolidTextColorEffect::apply(const QString &line)

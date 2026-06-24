@@ -38,10 +38,15 @@ class SolidTextColorEffect : public TextColorSchemeEffect
     ColorScheme scheme;
 
 public:
+    SolidTextColorEffect();
+    SolidTextColorEffect(MessageType source);
     SolidTextColorEffect(MessageType source, ColorScheme&& scheme);
     SolidTextColorEffect(MessageType source, const ColorScheme& scheme);
 
-    QColor Color(MessageType source) const;
+    QColor Color() const;
+
+    void setSource(MessageType source);
+    MessageType getSource() const;
 
     StyledText apply(const QString &line) override;
 };

@@ -2,7 +2,7 @@
 #include "ui_chatview.h"
 #include "styledtextadapter.h"
 
-#define NEWLINE "\n"
+#define NEWLINE "<hr>"
 
 StyledText ChatView::applyEffect(QString text)
 {
@@ -36,7 +36,7 @@ void ChatView::setInputEffect(effect_p&&effect)
 
 void ChatView::addLine(const StyledText &line)
 {
-    this->ui->chatText->insertPlainText(NEWLINE);
+    this->ui->chatText->append(NEWLINE);
     StyledTextAdapter::print(line, this->ui->chatText);
     this->messages.push_back(line);
 }
