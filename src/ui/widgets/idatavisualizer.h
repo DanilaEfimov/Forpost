@@ -17,6 +17,9 @@ public:
     virtual ~IDataVisualizer() = default;
 
     virtual void write(T& out) const = 0;
+    virtual void visualize(const T& in) = 0;
+
+    virtual T get() const = 0;
 };
 
 #endif // IDATAVISUALIZER_H

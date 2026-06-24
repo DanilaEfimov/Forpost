@@ -18,15 +18,18 @@ INCLUDEPATH += \
 
 SOURCES += \
     $$SRC/core/main.cpp \
-    $$SRC/ui/cockpit/mainwindow.cpp \
+    $$files($$SRC/ui/cockpit/*.cpp) \
     $$files($$SRC/ui/widgets/*.cpp) \
     $$files($$SRC/ui/effects/*.cpp) \
-    $$files($$SRC/ui/styles/*.cpp)
+    $$files($$SRC/ui/styles/*.cpp)  \
+    $$files($$SRC/ui/widgets/data/*.cpp)
 
 HEADERS += \
-    $$files($$SRC/ui/widgets/*.h) \
-    $$files($$SRC/ui/effects/*.h) \
-    $$files($$SRC/ui/styles/*.h)
+    $$files($$SRC/ui/cockpit/*.h) \
+    $$files($$SRC/ui/widgets/*.h)   \
+    $$files($$SRC/ui/effects/*.h)   \
+    $$files($$SRC/ui/styles/*.h)    \
+    $$files($$SRC/ui/widgets/data/*.h)
 
 FORMS += \
     $$files($$SRC/ui/widgets/*.ui) \
