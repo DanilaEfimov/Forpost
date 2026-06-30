@@ -5,12 +5,6 @@
 #include <QPoint>
 #include <QtGlobal>
 
-CircleRenderEffect::CircleRenderEffect()
-{}
-
-CircleRenderEffect::~CircleRenderEffect()
-{}
-
 Ellipse::Ellipse(QPoint center, quint16 height, quint16 width)
     : center(center), height(height), width(width)
 {}

@@ -1,9 +1,9 @@
 #ifndef CIRCLERENDEREFFECT_H
 #define CIRCLERENDEREFFECT_H
 
+#include <QObject>
 #include <QPainter>
 #include <QRect>
-#include <QObject>
 
 struct Ellipse {
     QPoint center;
@@ -16,15 +16,15 @@ struct Ellipse {
     QRect toRect() const;
 };
 
+// ellipse with position
+using ellipse_wp = QPair<Ellipse, QPoint>;
+
 class CircleRenderEffect : public QObject
 {
     Q_OBJECT
 
 public:
-    CircleRenderEffect();
-    virtual ~CircleRenderEffect();
-
-    virtual void render(QPainter& painter, const Ellipse& ellipse) = 0;
+    virtual void render(QPainter& painter, const ellipse_wp& ellipse) = 0;
 };
 
 #endif // CIRCLERENDEREFFECT_H

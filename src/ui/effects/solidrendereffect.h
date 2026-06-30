@@ -11,7 +11,7 @@ public:
     SolidRenderEffect(const QColor& fill);
     virtual ~SolidRenderEffect() override = default;
 
-    void render(QPainter &painter, const Ellipse &ellipse) override;
+    void render(QPainter &painter, const ellipse_wp &ellipse) override;
 
     QColor getAccent() const;
     void setAccent(const QColor &newAccent);

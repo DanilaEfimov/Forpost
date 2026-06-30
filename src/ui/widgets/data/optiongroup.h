@@ -13,6 +13,8 @@ protected:
     QList<OptionData> options;
 
 public:
+    OptionGroup() = default;
+    OptionGroup(const QList<OptionData>& options);
     OptionGroup(const QList<QString>& names);
     virtual ~OptionGroup() = default;
 
@@ -31,6 +33,7 @@ public:
     const OptionData& getOption(qsizetype idx) const;
 
     qsizetype size() const;
+    void clear();
 };
 
 #endif // OPTIONGROUP_H

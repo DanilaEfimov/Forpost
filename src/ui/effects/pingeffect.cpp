@@ -22,7 +22,7 @@ PingEffect::PingEffect(const QColor& accent, int msec, int radius)
     this->timer.start();
 }
 
-void PingEffect::render(QPainter& painter, const Ellipse& ellipse)
+void PingEffect::render(QPainter& painter, const ellipse_wp &ellipse)
 {
     float progress = (this->timer.elapsed() % this->period) / (float) this->period;
 
@@ -42,7 +42,7 @@ void PingEffect::render(QPainter& painter, const Ellipse& ellipse)
     painter.setPen(pen);
     painter.setBrush(Qt::NoBrush);
 
-    Ellipse ping(ellipse.center, currentRadius);
+    Ellipse ping(ellipse.first.center, currentRadius);
     painter.drawEllipse(ping.toRect());
 }
 

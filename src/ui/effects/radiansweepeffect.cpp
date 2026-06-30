@@ -46,7 +46,7 @@ RadianSweepEffect::RadianSweepEffect(QColor accent, double omega)
     omega(omega)
 {}
 
-void RadianSweepEffect::render(QPainter& painter, const Ellipse& ellipse)
+void RadianSweepEffect::render(QPainter& painter, const ellipse_wp& ellipse)
 {
     QPen pen(this->accent);
     pen.setWidth(this->width);
@@ -54,7 +54,7 @@ void RadianSweepEffect::render(QPainter& painter, const Ellipse& ellipse)
     painter.setBrush(Qt::NoBrush);
 
     this->angle += this->omega;
-    painter.drawLine(ellipse.center, this->currentPoint(ellipse));
+    painter.drawLine(ellipse.first.center, this->currentPoint(ellipse.first));
 }
 
 QPointF RadianSweepEffect::currentPoint(const Ellipse &ellipse) const

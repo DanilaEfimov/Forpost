@@ -17,7 +17,7 @@ void SolidRenderEffect::setAccent(const QColor &newAccent)
 }
 
 
-void SolidRenderEffect::render(QPainter &painter, const Ellipse &ellipse)
+void SolidRenderEffect::render(QPainter &painter, const ellipse_wp &ellipse)
 {
     painter.setRenderHint(QPainter::Antialiasing);
 
@@ -25,5 +25,5 @@ void SolidRenderEffect::render(QPainter &painter, const Ellipse &ellipse)
     painter.setBrush(brush);
     painter.setPen(Qt::NoPen);
 
-    painter.drawEllipse(ellipse.toRect());
+    painter.drawEllipse(ellipse.first.toRect());
 }

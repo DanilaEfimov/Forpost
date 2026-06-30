@@ -13,7 +13,7 @@ class RadianSweepEffect : public CircleRenderEffect
 public:
     RadianSweepEffect(QColor accent, double omega);
 
-    void render(QPainter& painter, const Ellipse& ellipse) override;
+    void render(QPainter& painter, const ellipse_wp& ellipse) override;
 
     QColor getAccent() const;
     void setAccent(const QColor &newAccent);

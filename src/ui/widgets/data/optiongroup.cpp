@@ -29,7 +29,12 @@ OptionData &OptionGroup::findByName(const QString &name)
                                     ).arg(name).toStdString());
 }
 
+OptionGroup::OptionGroup(const QList<OptionData> &options)
+    : Data(), options(options)
+{}
+
 OptionGroup::OptionGroup(const QList<QString>& names)
+    : Data()
 {
     for(const auto& name : names){
         this->options.push_back(OptionData(name));
@@ -122,4 +127,9 @@ const OptionData& OptionGroup::getOption(qsizetype idx) const
 qsizetype OptionGroup::size() const
 {
     return this->options.size();
+}
+
+void OptionGroup::clear()
+{
+    this->options.clear();
 }

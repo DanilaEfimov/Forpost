@@ -15,9 +15,9 @@ class PulseEffect : public CircleRenderEffect
 public:
     PulseEffect(const QTime& period, const QColor& accent);
     PulseEffect(int msec, const QColor& accent);
-    virtual ~PulseEffect() override = default;
+    virtual ~PulseEffect() = default;
 
-    void render(QPainter& painter, const Ellipse& ellipse) override;
+    void render(QPainter& painter, const ellipse_wp& ellipse) override;
 
     QColor getAccent() const;
     void setAccent(const QColor &newAccent);

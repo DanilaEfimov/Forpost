@@ -53,10 +53,11 @@ WaveToCenterEffect::WaveToCenterEffect(
         throw std::invalid_argument("WaveToCentedEffect::WaveToCentedEffect: distance between waves cannot be 0");
 }
 
-void WaveToCenterEffect::render(QPainter& painter, const Ellipse& ellipse)
+void WaveToCenterEffect::render(QPainter& painter, const ellipse_wp &elps)
 {
     painter.setRenderHint(QPainter::Antialiasing);
 
+    const auto& ellipse = elps.first;
     float aspect = static_cast<float>(ellipse.width) / static_cast<float>(ellipse.height);
     quint16 count = ellipse.height / this->distance;
     QPainterPath outer, inner;

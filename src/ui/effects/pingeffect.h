@@ -15,9 +15,9 @@ class PingEffect : public CircleRenderEffect
 
 public:
     PingEffect(const QColor& accent, int msec, int radius);
-    virtual ~PingEffect() override = default;
+    virtual ~PingEffect() = default;
 
-    void render(QPainter& painter, const Ellipse& ellipse) override;
+    void render(QPainter& painter, const ellipse_wp& ellipse) override;
 
     void setDelay(float percents);
     float getDelay() const;

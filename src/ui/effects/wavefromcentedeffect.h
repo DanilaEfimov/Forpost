@@ -16,7 +16,7 @@ public:
     WaveFromCenterEffect(const QColor &accent, quint16 distance = 50);
     virtual ~WaveFromCenterEffect() override = default;
 
-    void render(QPainter& painter, const Ellipse& ellispe) override;
+    void render(QPainter& painter, const ellipse_wp& ellispe) override;
 
     QColor getAccent() const;
     void setAccent(const QColor &newAccent);

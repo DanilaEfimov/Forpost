@@ -56,11 +56,11 @@ PulseEffect::PulseEffect(int msec, const QColor &accent)
     : PulseEffect(QTime(0, 0, 0, msec), accent)
 {}
 
-void PulseEffect::render(QPainter& painter, const Ellipse& ellipse)
+void PulseEffect::render(QPainter& painter, const ellipse_wp &ellipse)
 {
     QColor current = this->currentColor();
     QBrush brush(current);
 
     painter.setBackground(brush);
-    painter.drawEllipse(ellipse.toRect());
+    painter.drawEllipse(ellipse.first.toRect());
 }

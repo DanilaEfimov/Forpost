@@ -6,10 +6,6 @@
 
 #include <QListView>
 
-namespace Ui {
-class OptionsWidget;
-}
-
 class OptionsWidget : public QListView, public IDataVisualizer<OptionGroup>
 {
     Q_OBJECT
@@ -17,11 +13,21 @@ class OptionsWidget : public QListView, public IDataVisualizer<OptionGroup>
     OptionGroup options;
 
 public:
+    explicit OptionsWidget(QWidget* parent = nullptr);
     explicit OptionsWidget(OptionGroup&& options, QWidget *parent = nullptr);
+    explicit OptionsWidget(const OptionGroup& option, QWidget* parent = nullptr);
     virtual ~OptionsWidget();
 
+    void write(OptionGroup &out) const override;
+    void visualize(const OptionGroup &in) override;
+
+    OptionGroup get() const override;
+
+protected:
+    void paintEvent(QPaintEvent* ev) override;
+
 private:
-    Ui::OptionsWidget *ui;
+    void initModel();
 };
 
 #endif // OPTIONSWIDGET_H

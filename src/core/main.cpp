@@ -1,16 +1,21 @@
 #include <QApplication>
 #include <QMainWindow>
 
-#include "euleranglesvisualizer.h"
+#include "optionswidget.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    EulerAnglesVisualizer* av = new EulerAnglesVisualizer;
+    QList<QString> variants = {
+        "Right top", "Left top",
+        "Right bottom", "Left bottom",
+    };
+    OptionGroup options(variants);
+    OptionsWidget* optWidget = new OptionsWidget(options);
 
     auto window = new QMainWindow;
-    window->setCentralWidget(av);
+    window->setCentralWidget(optWidget);
 
     window->resize(600, 600);
     window->show();

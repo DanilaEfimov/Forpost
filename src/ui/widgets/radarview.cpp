@@ -218,7 +218,7 @@ void RadarView::paintEvent(QPaintEvent* event)
     this->QWidget::paintEvent(event);
 
     if(this->effect)
-        this->effect->render(painter, ellipse);
+        this->effect->render(painter, {ellipse, {0,0}});
 
     this->printSectors(painter);
     this->printCircles(painter);
